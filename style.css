@@ -1,0 +1,234 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --celeste: #5d96a9;
+  --amarillo: #dbb922;
+  --rojo: #a91c22;
+  --gris-oscuro: #292c33;
+  --gris-claro: #3b3d49;
+  --gris-cinta: #434343;
+  --blanco: #f8f9fb;
+  --negro: #040605;
+  --fondo-carreta: #5f8697;
+  --fondo-engrane: #24657b;
+  --ancho: 340px;
+  --alto: 210px;
+  --icon-size: 1.5em;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.cassette {
+  width: var(--ancho);
+  height: var(--alto);
+  background: var(--gris-claro);
+  position: relative;
+  border-radius: 4px;
+}
+
+.agujero-esquina {
+  width: calc(var(--ancho) * 0.023);
+  height: calc(var(--ancho) * 0.023);
+  background-color: var(--negro);
+  position: absolute;
+  border-radius: 100%;
+}
+
+.agujero-esquina1 {
+  left: 5px;
+  top: 5px;
+}
+.agujero-esquina2 {
+  right: 5px;
+  top: 5px;
+}
+
+.agujero-esquina3 {
+  bottom: 5px;
+  left: 5px;
+}
+
+.agujero-esquina4 {
+  bottom: 5px;
+  right: 5px;
+}
+
+.etiqueta {
+  width: calc(var(--ancho) * 0.87);
+  height: calc(var(--alto) * 0.59);
+  background-color: var(--blanco);
+  position: absolute;
+  top: calc((var(--ancho) * 0.13) / 2);
+  left: calc((var(--ancho) * 0.13) / 2);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.cinta {
+  width: 100%;
+  height: 11px;
+}
+.cinta.celeste {
+  background-color: var(--celeste);
+}
+.cinta.amarillo {
+  background-color: var(--amarillo);
+}
+.cinta.rojo {
+  background-color: var(--rojo);
+}
+
+.visor-cinta {
+  width: 60%;
+  height: 45%;
+  background-color: blue;
+  position: absolute;
+  border-radius: 5px;
+  background-color: var(--fondo-carreta);
+  border: 5px solid var(--gris-claro);
+  overflow: hidden;
+  z-index: 2000;
+}
+.papel{
+    width: 80px;
+    height: 80px;
+    border-radius: 100%;
+    background-color: var(--gris-cinta);
+    position: absolute;
+    z-index: -1;
+    top: -15px;
+}
+.papel.right{
+    width: 65px;
+    height: 65px;
+    top: -10px;
+    right: 0;
+}
+
+.carrete {
+  width: 30%;
+  height: 100%;
+  background-color: var(--gris-claro);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carrete1 {
+  right: 0;
+}
+
+.rueda {
+  width: calc((var(--ancho) * 0.12));
+  height: calc((var(--ancho) * 0.12));
+  background-color: #fff;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.engrane {
+  display: inline-block;
+  position: relative;
+  margin: calc(var(--icon-size) / 5);
+  width: var(--icon-size);
+  height: var(--icon-size);
+  background: var(--fondo-engrane);
+  border-radius: 50%;
+  border: calc(var(--icon-size) / 3.5) solid var(--fondo-engrane);
+  box-sizing: border-box;
+}
+
+.engrane::before,
+.engrane::after {
+  content: "×";
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "times new roman";
+  font-weight: bold;
+  font-size: calc(var(--icon-size) * 2.5);
+  color: var(--fondo-engrane);
+}
+
+.engrane::after {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.relieve {
+  z-index: 10;
+  width: calc(var(--ancho) * 0.6);
+  height: calc(var(--alto) * 0.25);
+  background-color: var(--gris-oscuro);
+  position: absolute;
+  bottom: 0;
+  left: calc((var(--ancho) * 0.4) / 2);
+}
+
+.relieve::before,
+.relieve::after {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  width: 10px;
+  height: calc(var(--alto) * 0.25);
+  border-bottom: calc(var(--alto) * 0.25) solid var(--gris-oscuro);
+  border-left: 20px solid transparent;
+  left: -20px;
+}
+
+.relieve::after {
+  left: calc((var(--ancho) * 0.6));
+  border-bottom: 0;
+  border-top: calc(var(--alto) * 0.25) solid transparent;
+  border-left: 20px solid var(--gris-oscuro);
+}
+
+.relieve .agujero.small {
+  width: calc(var(--ancho) * 0.04);
+  height: calc(var(--ancho) * 0.04);
+  background-color: var(--negro);
+  position: absolute;
+  border-radius: 100%;
+  top: 10px;
+  left: 20px;
+}
+
+.relieve .agujero.small.right {
+  left: 165px;
+}
+
+.relieve .agujero.big {
+  width: calc(var(--ancho) * 0.06);
+  height: calc(var(--ancho) * 0.06);
+  background-color: var(--negro);
+  position: absolute;
+  border-radius: 100%;
+  bottom: 4px;
+}
+
+.relieve .agujero.big.right {
+  right: 0;
+}
+
+.relieve.dos {
+  z-index: 1;
+  background: linear-gradient(to right, rgb(54, 53, 53), rgb(82, 80, 80));
+  bottom: 3px;
+  left: calc((var(--ancho) * 0.4) / 2);
+}
